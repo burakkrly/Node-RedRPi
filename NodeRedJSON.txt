@@ -1,0 +1,208 @@
+[
+    {
+        "id": "043e8eae58df5463",
+        "type": "tab",
+        "label": "Login",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6ee34280d8cfefe3",
+        "type": "comment",
+        "z": "043e8eae58df5463",
+        "name": "Login Page",
+        "info": "",
+        "x": 270,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "42017744b274c3bb",
+        "type": "ui_text",
+        "z": "043e8eae58df5463",
+        "group": "2348b7162c87bf4e",
+        "order": 4,
+        "width": 9,
+        "height": 2,
+        "name": "",
+        "label": "Bilgi:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 810,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "f162f80243cb4b6a",
+        "type": "function",
+        "z": "043e8eae58df5463",
+        "name": "function 2",
+        "func": "// Giriş bilgilerini al\nvar inputUsername = msg.payload.username;\nvar inputPassword = msg.payload.password;\n\n// Doğru kullanıcı adı ve şifre\nvar correctUsername = \"admin\";\nvar correctPassword = \"password\";\n\n// Kullanıcı adı ve şifreyi kontrol et\nif (inputUsername === correctUsername && inputPassword === correctPassword) {\n    msg.payload = \"Correct!\";\n    return msg;\n} else {\n    msg.payload = \"wrong!\";\n    return msg;\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "42017744b274c3bb"
+            ]
+        ]
+    },
+    {
+        "id": "78870bbf23905566",
+        "type": "ui_template",
+        "z": "043e8eae58df5463",
+        "group": "2348b7162c87bf4e",
+        "name": "template",
+        "order": 3,
+        "width": 9,
+        "height": 9,
+        "format": "<form action=\"/login\" method=\"POST\"\n    style=\"width: 400px; height: 200px; margin: 100px auto; padding: 30px; background-color: #f1f1f1; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column; justify-content: center; align-items: center;\">\n    <label for=\"username\" style=\"font-weight: bold; color: black; font-size: 24px;\">Kullanıcı Adı:</label>\n    <input type=\"text\" id=\"username\" name=\"username\" required style=\"display: block; width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-size: 18px;\">\n    <label for=\"password\" style=\"font-weight: bold; color: black; font-size: 24px;\">Şifre:</label>\n    <input type=\"password\" id=\"password\" name=\"password\" required style=\"display: block; width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-size: 18px;\">\n    <input type=\"submit\" value=\"Giriş Yap\" style=\"background-color: #4CAF50; color: #fff; border: none; border-radius: 8px; padding: 15px; cursor: pointer; font-weight: bold; width: 100%; transition: background-color 0.3s; font-size: 20px;\">\n</form>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "f162f80243cb4b6a"
+            ]
+        ]
+    },
+    {
+        "id": "bdf3970c1d804e5f",
+        "type": "http in",
+        "z": "043e8eae58df5463",
+        "name": "",
+        "url": "/login",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "78870bbf23905566"
+            ]
+        ]
+    },
+    {
+        "id": "d39f5a3fa51e5291",
+        "type": "http response",
+        "z": "043e8eae58df5463",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 970,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "0017647bd304f0fb",
+        "type": "ui_media",
+        "z": "043e8eae58df5463",
+        "group": "2348b7162c87bf4e",
+        "name": "",
+        "width": 5,
+        "height": 2,
+        "order": 2,
+        "category": "envita",
+        "file": "indir (1).jpeg",
+        "layout": "side",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 810,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7a48f0acaf0b46cc",
+        "type": "ui_media",
+        "z": "043e8eae58df5463",
+        "group": "2348b7162c87bf4e",
+        "name": "",
+        "width": 4,
+        "height": 2,
+        "order": 1,
+        "category": "argate",
+        "file": "New.png",
+        "layout": "side",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 750,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2b4656510cdddcbb",
+        "type": "ui_spacer",
+        "z": "043e8eae58df5463",
+        "name": "spacer",
+        "group": "0846f7bb69166af7",
+        "order": 4,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "f9925f0e5943a775",
+        "type": "ui_spacer",
+        "z": "043e8eae58df5463",
+        "name": "spacer",
+        "group": "0846f7bb69166af7",
+        "order": 5,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "2348b7162c87bf4e",
+        "type": "ui_group",
+        "name": "Medya",
+        "tab": "c1da8fbfa6019239",
+        "order": 1,
+        "disp": true,
+        "width": "9",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "0846f7bb69166af7",
+        "type": "ui_group",
+        "name": "Sıcaklık",
+        "tab": null,
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c1da8fbfa6019239",
+        "type": "ui_tab",
+        "name": "Login",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
